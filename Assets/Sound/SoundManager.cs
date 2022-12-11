@@ -7,7 +7,6 @@ using UnityEngine;
 // transform 
 // loop the clip
 
-
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance { get; private set; }
@@ -49,7 +48,6 @@ public class SoundManager : MonoBehaviour
         randIdex = UnityEngine.Random.Range(0, aClips.Length - 1);
         AudioClip randClip = aClips[randIdex];
         return randClip;
-
     }
 
 
