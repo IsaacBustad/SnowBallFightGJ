@@ -18,6 +18,12 @@ public class PlayerScore : Score
     public override void AddScore(int aDamage)
     {
         curScore += aDamage;
+        WinScore();
+    }
+
+    public void subScore(int aDamage)
+    {
+        curScore -= aDamage;
     }
 
     protected void WinScore()

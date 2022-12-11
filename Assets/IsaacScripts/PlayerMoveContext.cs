@@ -6,9 +6,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Unity.Netcode;
 
-public class PlayerMoveContext : NetworkBehaviour
+public class PlayerMoveContext : MonoBehaviour
 {
     // vars
     protected PlayerMoveState pC = null;
@@ -30,12 +29,7 @@ public class PlayerMoveContext : NetworkBehaviour
         mainCam = Camera.main;
     }
 
-    public override void OnNetworkSpawn()
-    {
-        //NetworkManager.Player
-        //this.NetworkObject = true;
-        if (!IsOwner) { Destroy(gameObject.GetComponent<PlayerInput>()); Destroy(this); }
-    }
+    
 
     protected virtual void FixedUpdate()
     {

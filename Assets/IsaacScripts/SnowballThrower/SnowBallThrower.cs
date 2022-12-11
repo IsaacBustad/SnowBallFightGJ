@@ -4,22 +4,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 using UnityEngine.InputSystem;
 
-public class SnowBallThrower : NetworkBehaviour
+public class SnowBallThrower : MonoBehaviour
 {
     // vars
-    [SerializeField] protected NetworkObject netObj;
     [SerializeField] protected GameObject snowBall;
     [SerializeField] protected GameObject snowBall2;
     [SerializeField] protected GameObject snowBall3;
-    [SerializeField] protected Transform ThrPt;
+    [SerializeField] protected Transform thrPt;
 
     [SerializeField] protected float throwBase = 10f;
     [SerializeField] protected float throwCurPow;
     [SerializeField] protected int pL = 10;
-    [SerializeField] protected PlayerScore pS;
+    //[SerializeField] protected PlayerScore pS;
 
     protected Camera cam;
     protected Vector3 mPos;
@@ -57,7 +55,7 @@ public class SnowBallThrower : NetworkBehaviour
         else if (context.canceled)
         {
 
-            RequestThrowServerRpc(ThrPt.position, mPos);
+            ExeThrow();
 
         }
 
@@ -65,43 +63,26 @@ public class SnowBallThrower : NetworkBehaviour
             
     }
 
-    [ServerRpc(RequireOwnership =false)]
-    void RequestThrowServerRpc(Vector3 aPos, Vector3 aMp)
+    
+
+    void ExeThrow()
     {
-        ExeThrow(aPos, aMp);
-    }
-
-    void ExeThrow(Vector3 aPos, Vector3 aMp)
-    {
-        if (IsHost) 
-        {
-            Vector3 rot = aMp - aPos;
-            rot.z = transform.position.z;
-
-
-            GameObject aSB = Instantiate(snowBall, ThrPt.position, Quaternion.identity);
-
-
-
-            aSB.transform.LookAt(rot);
-            aSB.GetComponent<Rigidbody2D>().AddForce(transform.forward * throwCurPow, ForceMode2D.Impulse);
-            aSB.GetComponent<Snowball>().playerLayer = pL;
-            aSB.GetComponent<Snowball>().pS = pS;
-            aSB.GetComponent<NetworkObject>().Spawn();
-        }
-        /*Vector3 rot = aMp - aPos;
+        
+        Vector3 rot = mPos - thrPt.position;
         rot.z = transform.position.z;
 
 
-        GameObject aSB = Instantiate(snowBall, ThrPt.position, Quaternion.identity);
+        GameObject aSB = Instantiate(snowBall, thrPt.position, Quaternion.identity);
 
 
 
         aSB.transform.LookAt(rot);
         aSB.GetComponent<Rigidbody2D>().AddForce(transform.forward * throwCurPow, ForceMode2D.Impulse);
         aSB.GetComponent<Snowball>().playerLayer = pL;
-        aSB.GetComponent<Snowball>().pS = pS;
-        aSB.GetComponent<NetworkObject>().Spawn();*/
+        //aSB.GetComponent<Snowball>().pS = pS;
+            
+        
+        
     }
 
     public virtual void ThrowSnow2(InputAction.CallbackContext context)
