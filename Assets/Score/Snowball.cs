@@ -2,10 +2,11 @@
 // 12/10/2022
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
 
-public class Snowball : MonoBehaviour
+public class Snowball : NetworkBehaviour
 {
     public PlayerScore pS;
     public int playerLayer;

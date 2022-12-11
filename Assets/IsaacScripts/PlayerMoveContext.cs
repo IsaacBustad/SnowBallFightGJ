@@ -32,16 +32,18 @@ public class PlayerMoveContext : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        if (!IsOwner) { Destroy(this); }
+        //NetworkManager.Player
+        //this.NetworkObject = true;
+        if (!IsOwner) { Destroy(gameObject.GetComponent<PlayerInput>()); Destroy(this); }
     }
 
     protected virtual void FixedUpdate()
     {
         MovePlayer();
         //Vector3 worldPos = mainCam.ScreenToWorldPoint(Mouse.current.position);
-        Ray ray = mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        //Ray ray = mainCam.ScreenPointToRay(Mouse.current.position.ReadValue());
         
-        if(Physics.Raycast(ray: ray, hitInfo: out RaycastHit hit) && hit.collider)
+        /*if(Physics.Raycast(ray: ray, hitInfo: out RaycastHit hit) && hit.collider)
         {
             Debug.Log("hit");
             Vector2 rot = hit.point - transform.position;
@@ -49,7 +51,7 @@ public class PlayerMoveContext : NetworkBehaviour
             
 
             transform.LookAt(rot);
-        }
+        }*/
     }
 
     protected void MovePlayer()
