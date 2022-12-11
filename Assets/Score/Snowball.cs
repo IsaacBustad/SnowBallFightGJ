@@ -29,6 +29,7 @@ public class Snowball : MonoBehaviour
         if(collision.gameObject.layer == 10) 
         {
             collision.gameObject.GetComponent<Health>().TakeDammage(damage);
+            Destroy(gameObject);
         }
 
 
