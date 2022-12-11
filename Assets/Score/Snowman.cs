@@ -1,5 +1,8 @@
+
 // written by Grady Shupe
 // 12/10/2022
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +10,10 @@ using Unity.Netcode;
 
 public class Snowman : NetworkBehaviour
 {
+
     [SerializeField]protected PlayerScore pScore;
+
+
     protected GameObject snowmanPartA;
     protected GameObject snowmanPartB;
     protected GameObject snowmanPartC;
