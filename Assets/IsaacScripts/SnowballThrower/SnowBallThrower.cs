@@ -7,7 +7,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.InputSystem;
 
-public class SnowBallThrower : MonoBehaviour
+public class SnowBallThrower : NetworkBehaviour
 {
     // vars
     [SerializeField] protected GameObject snowBall;
@@ -54,7 +54,7 @@ public class SnowBallThrower : MonoBehaviour
             rot.z = transform.position.z;
 
             
-            GameObject aSB = Instantiate(snowBall, transform.position, Quaternion.identity);
+            //GameObject aSB = NetworkSpawnManager.(snowBall, transform.position, Quaternion.identity);
 
             
 
