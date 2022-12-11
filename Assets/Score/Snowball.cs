@@ -2,15 +2,15 @@
 // 12/10/2022
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Netcode;
+
 using UnityEngine;
 
 
-public class Snowball : NetworkBehaviour
+public class Snowball : MonoBehaviour
 {
-    public PlayerScore pS;
+    //public PlayerScore pS;
     public int playerLayer;
-    protected int damage = 1;
+    [SerializeField] protected float damage = 1;
     public int Damage { get; private set; }
     // Start is called before the first frame update
     void Start()
@@ -26,11 +26,17 @@ public class Snowball : NetworkBehaviour
 
     protected virtual void OnCollision2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 9 || collision.gameObject.layer == 10 && collision.gameObject.layer != playerLayer)
+        if(collision.gameObject.layer == 10) 
+        {
+            collision.gameObject.GetComponent<Health>().TakeDammage(damage);
+        }
+
+
+        /*if(collision.gameObject.layer == 9 || collision.gameObject.layer == 10 && collision.gameObject.layer != playerLayer)
         {
             IncreaseScore();
         }
-        Debug.Log("collide");/*
+        Debug.Log("collide");*//*
         if (collision.gameObject.layer == isPlayer)
         {
             IncreaseScore(collision.gameObject.GetComponent<PlayerScore>());
@@ -38,10 +44,10 @@ public class Snowball : NetworkBehaviour
         */
     }
 
-    protected void IncreaseScore()
+    /*protected void IncreaseScore()
     {
         pS.AddScore(Damage);        
-    }        
+    }       */ 
 
 
     // accessors

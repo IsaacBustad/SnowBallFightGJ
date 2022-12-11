@@ -6,9 +6,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.Netcode;
 
-public class Snowman : NetworkBehaviour
+public class Snowman : MonoBehaviour
 {
 
     [SerializeField]protected PlayerScore pScore;
