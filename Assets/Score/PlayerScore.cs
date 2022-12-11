@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class PlayerScore : Score
 {
+    public Snowman playerSnowman;
     // Start is called before the first frame update
     protected void Start()
     {
