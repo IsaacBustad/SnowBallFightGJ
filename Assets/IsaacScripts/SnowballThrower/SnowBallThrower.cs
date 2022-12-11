@@ -54,7 +54,7 @@ public class SnowBallThrower : NetworkBehaviour
             rot.z = transform.position.z;
 
             
-            //GameObject aSB = NetworkSpawnManager.(snowBall, transform.position, Quaternion.identity);
+            GameObject aSB = Instantiate(snowBall, transform.position, Quaternion.identity);
 
             
 
