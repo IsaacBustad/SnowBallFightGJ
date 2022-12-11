@@ -2,14 +2,14 @@
 // 12/10/2022
 using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 
 public class Snowball : MonoBehaviour
 {
-    
-    [SerializeField] protected int damage = 1;
+    public PlayerScore pS;
+    public int playerLayer;
+    protected int damage = 1;
     public int Damage { get; private set; }
     // Start is called before the first frame update
     void Start()
@@ -23,8 +23,12 @@ public class Snowball : MonoBehaviour
         
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnCollision2D(Collider2D collision)
     {
+        if(collision.gameObject.layer == 9 || collision.gameObject.layer == 10 && collision.gameObject.layer != playerLayer)
+        {
+            IncreaseScore();
+        }
         Debug.Log("collide");/*
         if (collision.gameObject.layer == isPlayer)
         {
@@ -33,8 +37,13 @@ public class Snowball : MonoBehaviour
         */
     }
 
-    protected void IncreaseScore(Score aScore)
+    protected void IncreaseScore()
     {
-        aScore.AddScore(Damage);        
+        pS.AddScore(Damage);        
     }        
+
+
+    // accessors
+
+
 }
