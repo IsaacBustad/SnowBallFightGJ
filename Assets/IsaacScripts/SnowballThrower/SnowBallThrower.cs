@@ -7,7 +7,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.InputSystem;
 
-public class SnowBallThrower : MonoBehaviour
+public class SnowBallThrower : NetworkBehaviour
 {
     // vars
     [SerializeField] protected GameObject snowBall;
@@ -16,6 +16,8 @@ public class SnowBallThrower : MonoBehaviour
 
     [SerializeField] protected float throwBase = 10f;
     [SerializeField] protected float throwCurPow;
+    [SerializeField] protected int pL = 10;
+    [SerializeField] protected PlayerScore pS;
 
     protected Camera cam;
     protected Vector3 mPos;
@@ -58,6 +60,8 @@ public class SnowBallThrower : MonoBehaviour
 
             aSB.transform.LookAt(rot);
             aSB.GetComponent<Rigidbody2D>().AddForce(transform.forward * throwCurPow, ForceMode2D.Impulse);
+            aSB.GetComponent<Snowball>().playerLayer = pL;
+            aSB.GetComponent<Snowball>().pS = pS;
 
         }
 
