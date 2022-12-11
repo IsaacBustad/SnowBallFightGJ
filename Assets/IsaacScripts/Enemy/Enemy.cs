@@ -6,14 +6,23 @@ public class Enemy : MonoBehaviour
 {
     // vars
     [SerializeField] protected float dammage = 10f;
-
+    [SerializeField] protected float movespeed = 5;
 
     // methods
+    protected void FixedUpdate()
+    {
+        transform.Translate(Vector3.left * Time.fixedDeltaTime * movespeed);
+    }
+    protected void Start()
+    {
+        GetComponent<Rigidbody2D>().freezeRotation = true;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 9)
+        PlayerHealth pH = collision.gameObject.GetComponent<PlayerHealth>();
+        if (pH != null)
         {
-            collision.gameObject.GetComponent<Health>().TakeDammage(dammage);
+            pH.TakeDammage(dammage);
         }
     }
 

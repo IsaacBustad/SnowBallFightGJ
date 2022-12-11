@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6366274405533915564}
   - component: {fileID: 3098063039829958110}
   - component: {fileID: 8426945272186785580}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -258,7 +258,7 @@ Animator:
   m_GameObject: {fileID: 3570323328014252400}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1cfc751fc71bf7d409fe5a8851dd0d16, type: 2}
+  m_Controller: {fileID: 9100000, guid: ddc4cec3c80e0434ba6263b3a2ac9cb9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -277,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8611332507230080107}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TrowPt
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -29,9 +29,10 @@ public class Snowball : MonoBehaviour
         if(collision.gameObject.layer == 10) 
         {
             collision.gameObject.GetComponent<Health>().TakeDammage(damage);
+            SoundManager.Instance.SnowBalLSoundEffect();
             Destroy(gameObject);
         }
-
+        SoundManager.Instance.SnowBalLSoundEffect();
 
         /*if(collision.gameObject.layer == 9 || collision.gameObject.layer == 10 && collision.gameObject.layer != playerLayer)
         {

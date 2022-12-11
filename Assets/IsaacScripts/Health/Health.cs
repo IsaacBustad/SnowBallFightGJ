@@ -9,6 +9,10 @@ public class Health : MonoBehaviour
 
 
     // functions
+    public void Awake()
+    {
+        maxHealth = curHealth;
+    }
 
     public virtual void TakeDammage(float aDammage)
     {
@@ -17,6 +21,7 @@ public class Health : MonoBehaviour
         {
             EndAct();
         }
+        GetComponent<Animator>().SetTrigger("hurt");
     }
 
     protected virtual void EndAct()
