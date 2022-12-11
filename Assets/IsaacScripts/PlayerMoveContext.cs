@@ -19,6 +19,10 @@ public class PlayerMoveContext : MonoBehaviour
     protected Vector2 moveAmt = new Vector2();
     protected Camera mainCam;
 
+    [SerializeField] SoundManager soundManager;
+    [SerializeField] float timeTo = 10f;
+    protected float timeSince = 0;
+
     // methods
     protected virtual void Awake()
     {
@@ -74,8 +78,19 @@ public class PlayerMoveContext : MonoBehaviour
     protected virtual void LimitSpeed()
     {
         Vector2 curSpeed = new Vector2(rb.velocity.x, rb.velocity.y);
+        if(curSpeed.magnitude > .5f)
+        {
+            
+                soundManager.RunSoundEffect();
+            
+        }
         if (curSpeed.magnitude > maxMoveSpeed)
         {
+            if (timeSince >= timeTo)
+            {
+                soundManager.RunSoundEffect();
+            }
+            else { timeSince += Time.fixedDeltaTime; }
             Vector2 magSpeed = curSpeed.normalized;
             Vector2 newSpeed = new Vector2(magSpeed.x * maxMoveSpeed, 0f);
             rb.velocity = newSpeed;

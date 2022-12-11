@@ -183,6 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxMoveSpeed: 10
+  soundManager: {fileID: 4236686833685824697}
+  timeTo: 0.025
 --- !u!50 &3489999710041199501
 Rigidbody2D:
   serializedVersion: 4
