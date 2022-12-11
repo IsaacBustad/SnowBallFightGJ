@@ -20,5 +20,6 @@ public class Spawner : MonoBehaviour
     public void SpawnerEnemy()
     {
         GameObject aEnem = Instantiate(enemy, transform.position, Quaternion.identity);
+        sinceLast = 0;
     }
 }

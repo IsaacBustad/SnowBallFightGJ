@@ -9,8 +9,9 @@ using UnityEngine;
 public class Snowball : MonoBehaviour
 {
     //public PlayerScore pS;
-    public int playerLayer;
-    [SerializeField] protected float damage = 1;
+    //public int playerLayer;
+    [SerializeField] protected float damage = 10;
+    public SoundManager soundManager;
     public int Damage { get; private set; }
     // Start is called before the first frame update
     void Start()
@@ -24,15 +25,19 @@ public class Snowball : MonoBehaviour
         
     }
 
-    protected virtual void OnCollision2D(Collider2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 10) 
+        Debug.Log("collided");
+        if (collision.gameObject.layer == 10) 
         {
+            Debug.Log("layer");
             collision.gameObject.GetComponent<Health>().TakeDammage(damage);
-            SoundManager.Instance.SnowBalLSoundEffect();
+            Debug.Log("damage");
+            soundManager.SnowBalLSoundEffect();
             Destroy(gameObject);
         }
-        SoundManager.Instance.SnowBalLSoundEffect();
+        soundManager.SnowBalLSoundEffect();
+        Destroy(gameObject);
 
         /*if(collision.gameObject.layer == 9 || collision.gameObject.layer == 10 && collision.gameObject.layer != playerLayer)
         {

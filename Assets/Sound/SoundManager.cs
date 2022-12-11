@@ -9,7 +9,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager Instance { get; private set; }
+    
     private AudioSource source;
     [SerializeField] protected AudioClip[] runClips;
     [SerializeField] protected AudioClip[] snowBallClips;
@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour
     private void Awake()
     {
         source = GetComponent<AudioSource>();
-        Instance = this;
+        
     }
     public void PlaySound(AudioClip _sound)
     {
@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour
         int randIdex = 0;
         // clarifying we are using the UnityEngine for random range 
         // aClips is used for the ranges in between clips
-        randIdex = UnityEngine.Random.Range(0, aClips.Length - 1);
+        randIdex = UnityEngine.Random.Range(0, aClips.Length - 2);
         AudioClip randClip = aClips[randIdex];
         return randClip;
     }

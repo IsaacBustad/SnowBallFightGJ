@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     // functions
     public void Awake()
     {
-        maxHealth = curHealth;
+        curHealth = maxHealth;
     }
 
     public virtual void TakeDammage(float aDammage)
