@@ -10,7 +10,7 @@ public class Snowball : MonoBehaviour
 {
     //public PlayerScore pS;
     public int playerLayer;
-    protected int damage = 1;
+    [SerializeField] protected float damage = 1;
     public int Damage { get; private set; }
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,7 @@ public class Snowball : MonoBehaviour
     {
         if(collision.gameObject.layer == 10) 
         {
-
+            collision.gameObject.GetComponent<Health>().TakeDammage(damage);
         }
 
 
